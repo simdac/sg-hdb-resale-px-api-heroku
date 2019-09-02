@@ -1,16 +1,20 @@
-# SG HDB Resale Price App
+<p align="center"><a href="http://simdaclub.com/">
+  <img width="350" height="350"  src="https://i.imgur.com/OS0Eood.png"></a>
+</p>
 
-Hi. More details will soon be added to this repository. In the meanwhile, if you intend to push to this repository, **please create a branch** of your own first.
+# [`SIM DAC`](http://simdaclub.com/): SG HDB Resale Price App
 
-```shell
-# Create branch with specified branch name
-git checkout -b <branch_name>
-# example:
-# git checkout -b ryzal_branch
-```
+This repository is dedicated for SIM DAC's end-to-end implementation of a dashboard application for the use case of Singapore's HDB resale price prediction.
+The Kaggle competition page for this use case can be found [here](https://www.kaggle.com/c/hdb-resale-price-prediction). This project is part of a tryout for SIM DAC's mentorship initiative.
 
-Then after, make a **pull request** through GitHub's interface so that your changes can be merged into the **master** branch.
+# Overview of Application
+> Coming soon...
 
-Thanks! See you all soon!
+# Project Structure
+> Coming soon...
 
-- Ryzal
+# Contributions
+> Coming soon...
+
+# Credits
+> Coming soon...
