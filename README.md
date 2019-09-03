@@ -4,8 +4,7 @@
 
 # [`SIM DAC`](http://simdaclub.com/): SG HDB Resale Price App
 
-This repository is dedicated for SIM DAC's end-to-end implementation of a dashboard application for the use case of Singapore's HDB resale price prediction.
-The Kaggle competition page for this use case can be found [here](https://www.kaggle.com/c/hdb-resale-price-prediction). This project is part of a tryout for SIM DAC's mentorship initiative.
+This repository is dedicated for SIM DAC's end-to-end implementation of a dashboard application for the use case of Singapore's HDB resale price prediction. This project is part of a tryout for SIM DAC's mentorship initiative.
 
 # Overview of Application
 > Coming soon...
