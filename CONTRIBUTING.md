@@ -5,7 +5,7 @@
 The following is a set of guidelines for contributing to this project, which are hosted in [SIM DAC's Github page](https://github.com/simdac). These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## Code of Conduct
-This project and everyone participating in it is governed by the this project's [Code of Conduct](./CODE_OF_CONDUCT). By participating, you are expected to uphold this code. Please report unacceptable behavior to [ryzalkamis@gmail.com](ryzalkamis@gmail.com).
+This project and everyone participating in it is governed by the this project's [Code of Conduct](./CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [ryzalkamis@gmail.com](mailto:ryzalkamis@gmail.com).
 
 ## Styleguides
 
