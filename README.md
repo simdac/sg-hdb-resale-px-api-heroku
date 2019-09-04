@@ -13,7 +13,12 @@ This repository is dedicated for SIM DAC's end-to-end implementation of a dashbo
 > Coming soon...
 
 # Contributions
-> Coming soon...
+For a set of basic guidelines on how to contribute to this project, please refer to this [`CONTRIBUTING.MD`](./CONTRIBUTING.MD).
+
+> More coming soon...
+
+# Code of Conduct
+This project and everyone participating in it is governed by the this project's [Code of Conduct](./CODE_OF_CONDUCT). By participating, you are expected to uphold this code. Please report unacceptable behavior to [ryzalkamis@gmail.com](ryzalkamis@gmail.com).
 
 # Credits
 > Coming soon...
