@@ -1,7 +1,5 @@
 import requests
 import json
-import sqlite3
-import mysql
 
 
 #API
@@ -41,11 +39,6 @@ def getData(n, offnum = 0):
 
 
 getData(n)
-
-
-
-#Database
-#
 
 
 
