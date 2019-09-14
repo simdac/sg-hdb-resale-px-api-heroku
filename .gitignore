@@ -15,6 +15,8 @@
 *.tax2010
 *.vcf
 *.xml
+*.sql
+*.sqlite
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
@@ -55,6 +57,12 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+.sql/
+sql/
+sql/*
+
+
+
 MANIFEST
 
 # PyInstaller
@@ -133,6 +141,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+my_env/
+.my_env/
 
 # Spyder project settings
 .spyderproject
