@@ -4,7 +4,6 @@ import pandas as pd
 
 
 
-'''       MAKE EASY AND QUICK CONNECTION TO API GOV                             '''
 
 base_url = 'https://data.gov.sg/api/action/'
 search = 'datastore_search?'
@@ -20,11 +19,37 @@ links = ['42ff9cfe-abe5-4b54-beda-c88f9bb438ee','1b702208-44bf-4829-b620-4615ee1
 
 
 
-'''   A simple class to access and query gov api      '''
 class API():
+    '''
+    The API class provides helpful functions to interact with the https://data.gov.sg/ API
+
+    Attibutes
+    -----------
+    num: int
+        The link number
+    qry: str
+        The query for the API database
+
+    Methods
+    ----------
+    limit_fun(num)
+        Adding the limit query to the API
+
+
+    head(num = None)
+        Return the url with limit query attached
+
+
+    get(qry, num)
+        Returns url with a query to select particular rows from the database of the API
+
+    '''
+
 
     def __init__(self, num):
         self.url = 'https://data.gov.sg/api/action/datastore_search?&resource_id='+links[num]
+
+
 
     def limit_fun(self, num):
         l = limit.format(str(num))
@@ -33,7 +58,6 @@ class API():
 
 
     def head(self, num = None):
-
         if num is None:
             url = self.limit_fun(5)
             return url
@@ -42,21 +66,21 @@ class API():
             return url
 
 
-
-
-
     def get(self, qry, num):
 
             q = query.format(qry)
             url = self.limit_fun(num)+ q
             return url
 
-    def get_total(self):
-        total = ''
 
 
 
 
+def get_Json(url):
+    file = requests.get(url)
+    jsonData = file.json()
+
+    return jsonData
 
 
 
@@ -65,39 +89,34 @@ class API():
 def get_all():
     for i in range(len(links)):
         url = 'https://data.gov.sg/api/action/datastore_search?&resource_id='+links[i]
-        print(url)
-        file = requests.get(url)
-        jsonData = file.json()
-        data = jsonData['result']['records']
+
+        jsonData = get_Json(url)
         total = jsonData['result']['total']
-        #api = API(0)
-
-        print(i)
-        print(total)
-        total=0
-        #api =
 
 
-api = API(0)
-url = api.head(56335)
+        api = API(i)
+        uri = api.head(total)
+        print(uri)
+        jsonData = get_Json(uri)
+        data = jsonData['result']['records']
+
+        if i == 0:
+            df = pd.DataFrame(data)
+
+        else:
+            df2 = pd.DataFrame(data)
+            df = df.append(df2, ignore_index=True)
+
+        #print(i)
+        #print(total)
+        #print(df.head())
+        #print(df.shape)
+        #print(df.tail())
+    return df
+#api = API(0)
+#url = api.head(56335)
 #url = api.get('2 ROOM',5)
 
 
-print(url)
-file = requests.get(url)
-jsonData = file.json()
-
-total = jsonData['result']['total']
-df = pd.DataFrame(data)
-#parse = json.dumps(jsonData, indent=4)
-
-get_all()
-
-
-
-
-
-print(df.head())
-print(df.info())
-print(df.shape)
+df = get_all()
 print(df.tail())

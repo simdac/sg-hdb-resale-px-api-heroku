@@ -1,5 +1,4 @@
 import requests
-import enum
 from requests.models import PreparedRequest
 import pandas as pd
 
@@ -38,13 +37,13 @@ class MYSQL():
 
 
 
-
 def get_headers(txt):
     headers= []
     for i in range(len(txt)):
         if txt[i] =="<th>":
             headers.append(txt[i+1])
     return headers
+
 
 def get_data(txt):
     fullData = []
@@ -75,21 +74,3 @@ def get_data(txt):
             rowData=[]
 
     return fullData
-
-
-mysql = MYSQL()
-sql = mysql.head(500)
-#sql = mysql.tail("_id", 10)
-sqlCmd = {"sql":sql}
-website = 'https://localhost/connection_mysqli.php';
-req.prepare_url(website,sqlCmd)
-line = requests.get(req.url, verify = False).text
-txt = line.split()
-
-
-df = pd.DataFrame(get_data(txt),columns = get_headers(txt))
-df['resale_price'] = df['resale_price'].astype(int)
-data = df['resale_price'] < 250000
-print(df[data])
-print(df)
-print(df.info())
