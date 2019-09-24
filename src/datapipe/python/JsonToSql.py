@@ -34,12 +34,13 @@ class SQL(enum.Enum):
 
     '''
 
-
     Create = "CREATE TABLE"
     Alter  = "ALTER TABLE"
     Insert = "INSERT INTO"
     Delete = "DELETE FROM"
     Select = "SELECT"
+
+    
 
 
 
@@ -201,7 +202,3 @@ run()
 
 
 lite.close()
-
-
-
-

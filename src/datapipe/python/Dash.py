@@ -69,7 +69,7 @@ app.layout = html.Div(children=[
     ),
 
 
-    generate_table(df),
+    #generate_table(df),
 
     html.Label('Dropdown'),
 
@@ -93,12 +93,11 @@ app.layout = html.Div(children=[
 
     dcc.Dropdown(
         options = [
+
             {'label':'New York City', 'value':'NY'},
             {'label':'Bishun', 'value':'BIN'},
             {'label':'Hillview', 'value':'HV'},
             {'label':'Gelang', 'value':'Glng'},
-
-
 
         ],
         value='NY',
@@ -239,5 +238,82 @@ app.run_server(debug=True)
 
                             }
                     )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html.Label('Multi select Dropdown'),
+
+dcc.Dropdown(id='dd2',
+    options = [
+
+        {'label':'New York City', 'value':'NY'},
+        {'label':'Bishun', 'value':'BIN'},
+        {'label':'Hillview', 'value':'HV'},
+        {'label':'Gelang', 'value':'Glng'},
+
+    ],
+    value='NY',
+    multi = True,
+    style = {
+
+    'width':'50%'
+    }
+),
+
+html.Label('Checkboxes'),
+
+dcc.Checklist(
+    options=[
+    {'label':'New York City', 'value':'NY'},
+    {'label':'Bishun', 'value':'BIN'},
+    {'label':'Hillview', 'value':'HV'},
+    {'label':'Gelang', 'value':'Glng'},
+    ]
+),
+
+html.Label('Radio Items'),
+
+dcc.RadioItems(
+    options=[
+    {'label':'New York City', 'value':'NY'},
+    {'label':'Bishun', 'value':'BIN'},
+    {'label':'Hillview', 'value':'HV'},
+    {'label':'Gelang', 'value':'Glng'},
+    ]
+
+),
+
+
+html.Label('Text Input'),
+dcc.Input(id = 'input-id',value = 'NY', type='text'),
+html.Div(id = 'div-id'),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
              ])'''
