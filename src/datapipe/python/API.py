@@ -118,5 +118,5 @@ def get_all():
 #url = api.get('2 ROOM',5)
 
 
-df = get_all()
-print(df.tail())
+#df = get_all()
+#print(df.tail())
