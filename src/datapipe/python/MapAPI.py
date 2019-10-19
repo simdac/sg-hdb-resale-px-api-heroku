@@ -20,15 +20,6 @@ town = 'ANG MO KIO'
 geocode = 'https://api.opencagedata.com/geocode/v1/json?q='+block+'%'+street+'%'+town+'%Singapore&key=4227ca92784d4f8292daaa30ab42d521'
 
 
-'''print(data['results'][0]['annotations'])
-print('')
-print(data['results'][0]['bounds'])
-print('')
-print(data['results'][0]['components'])
-print('')
-print(data['results'][0]['geometry'])
-print(data['results'][0]['geometry']['lat'])
-print(data['results'][0]['geometry']['lng'])'''
 
 
 

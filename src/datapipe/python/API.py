@@ -107,16 +107,5 @@ def get_all():
             df2 = pd.DataFrame(data)
             df = df.append(df2, ignore_index=True)
 
-        #print(i)
-        #print(total)
-        #print(df.head())
-        #print(df.shape)
-        #print(df.tail())
+        
     return df
-#api = API(0)
-#url = api.head(56335)
-#url = api.get('2 ROOM',5)
-
-
-#df = get_all()
-#print(df.tail())
