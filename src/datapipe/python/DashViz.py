@@ -14,6 +14,7 @@ import OneMap
 import pickle
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
+import numpy as np
 
 
 '''             Directly Load the data in dataframe, chek and reload to make sure its there      '''
@@ -29,17 +30,17 @@ df = pd.read_csv('resale_flat_prices.csv')
 
 #town = df.town.unique()
 #street = df.street_name.unique()
-print(df.town.unique())
+print(df.flat_model.unique())
 df['town'] = le.fit_transform(df['town'])
 df['flat_type'] = le.fit_transform(df['flat_type'])
 df['storey_range'] = le.fit_transform(df['storey_range'])
 df['flat_model'] = le.fit_transform(df['flat_model'])
-print(df.town.unique())
+print(df.flat_model.unique())
 
 ##Init model
 filename = 'model1.h5'
 infile = open(filename,'rb')
-model = pickle.load(infile)
+modelPred = pickle.load(infile)
 infile.close()
 
 
@@ -104,13 +105,13 @@ def active(value):
         return  html.Div(  children=[
         html.Label('Select Flat type: ', style={'color':"#FFFFFF"}),
         dcc.Dropdown(id='ft',
-                options = [{'label':'1 Room',               'value':'1 Room'},
-                            {'label':'2 Room',              'value':'2 Room'},
-                            {'label':'3 Room',              'value':'3 Room'},
-                            {'label':'4 Room',              'value':'4 Room'},
-                            {'label':'5 Room',              'value':'5 Room'},
-                            {'label':'Multi Generation',    'value':'Multi Generation'},
-                            {'label':'Executive',           'value':'Executive'},]
+                options = [{'label':'1 Room',               'value':'0'},
+                            {'label':'2 Room',              'value':'1'},
+                            {'label':'3 Room',              'value':'2'},
+                            {'label':'4 Room',              'value':'3'},
+                            {'label':'5 Room',              'value':'4'},
+                            {'label':'Multi Generation',    'value':'6'},
+                            {'label':'Executive',           'value':'5'},]
                             )
                             ])
 
@@ -126,27 +127,27 @@ def activeModel(value):
     return  html.Div(  children=[
     html.Label('Select Flat model: ', style={'color':"#FFFFFF"}),
     dcc.Dropdown(id='fm',
-            options = [{'label':'Improved',                 'value':'Improved'},
-                        {'label':'New Generation',          'value':'New Generation'},
-                        {'label':'DBSS',                    'value':'DBSS'},
-                        {'label':'Standard',                'value':'Standard'},
-                        {'label':'Apartment',               'value':'Apartment'},
-                        {'label':'Simplified',              'value':'Simplified'},
-                        {'label':'Model A',                 'value':'Model A'},
-                        {'label':'Maisonette',              'value':'Maisonette'},
-                        {'label':'Premium Apartment',       'value':'Premium Apartment'},
-                        {'label':'Adjoined flat',           'value':'Adjoined flat'},
-                        {'label':'Model A-Maisonette',      'value':'Model A-Maisonette'},
-                        {'label':'Type S1',                 'value':'Type S1'},
-                        {'label':'Type S2',                 'value':'Type S2'},
-                        {'label':'Model A2',                'value':'Model A2'},
-                        {'label':'Terrace',                 'value':'Terrace'},
-                        {'label':'Improved-Maisonette',     'value':'Improved-Maisonette'},
-                        {'label':'Premium Maisonette',      'value':'Premium Maisonette'},
-                        {'label':'Multi Generation',        'value':'Multi Generation'},
-                        {'label':'Premium Apartment Loft',  'value':'Premium Apartment Loft'},
-                        {'label':'Premium Apartment',       'value':'Premium Apartment'},
-                        {'label':'2-room',                  'value':'2-room'},
+            options = [{'label':'Improved',                 'value':'8'},
+                        {'label':'New Generation',          'value':'20'},
+                        {'label':'DBSS',                    'value':'5'},
+                        {'label':'Standard',                'value':'29'},
+                        {'label':'Apartment',               'value':'4'},
+                        {'label':'Simplified',              'value':'28'},
+                        {'label':'Model A',                 'value':'15'},
+                        {'label':'Maisonette',              'value':'14'},
+                        {'label':'Premium Apartment',       'value':'22'},
+                        {'label':'Adjoined flat',           'value':'3'},
+                        {'label':'Model A-Maisonette',      'value':'16'},
+                        {'label':'Type S1',                 'value':'32'},
+                        {'label':'Type S2',                 'value':'33'},
+                        {'label':'Model A2',                'value':'17'},
+                        {'label':'Terrace',                 'value':'31'},
+                        {'label':'Improved-Maisonette',     'value':'9'},
+                        {'label':'Premium Maisonette',      'value':'25'},
+                        {'label':'Multi Generation',        'value':'18'},
+                        {'label':'Premium Apartment Loft',  'value':'23'},
+                        {'label':'Premium Apartment',       'value':'24'},
+                        {'label':'2-room',                  'value':'1'},
 
 
                         ])
@@ -161,31 +162,31 @@ def activeStorey(value):
     return  html.Div(  children=[
     html.Label('Select Storey Range: ', style={'color':"#FFFFFF"}),
     dcc.Dropdown(id='sr',
-            options = [{'label':'01 TO 03',         'value':'01 TO 03'},
-                        {'label':'01 TO 05',        'value':'01 TO 05'},
-                        {'label':'04 TO 06',        'value':'04 TO 06'},
-                        {'label':'06 TO 10',        'value':'06 TO 10'},
-                        {'label':'07 TO 09',        'value':'07 TO 09'},
-                        {'label':'10 TO 12',        'value':'10 TO 12'},
-                        {'label':'11 TO 15',        'value':'11 TO 15'},
-                        {'label':'13 TO 15',        'value':'13 TO 15'},
-                        {'label':'16 TO 18',        'value':'16 TO 18'},
-                        {'label':'16 TO 20',        'value':'16 TO 20'},
-                        {'label':'19 TO 21',        'value':'19 TO 21'},
-                        {'label':'21 TO 25',        'value':'21 TO 25'},
-                        {'label':'22 TO 24',        'value':'22 TO 24'},
-                        {'label':'25 TO 27',        'value':'25 TO 27'},
-                        {'label':'26 TO 30',        'value':'26 TO 30'},
-                        {'label':'28 TO 30',        'value':'28 TO 30'},
-                        {'label':'31 TO 33',        'value':'31 TO 33'},
-                        {'label':'31 TO 35',        'value':'31 TO 35'},
-                        {'label':'34 TO 36',        'value':'34 TO 36'},
-                        {'label':'36 TO 40',        'value':'36 TO 40'},
-                        {'label':'37 TO 39',        'value':'37 TO 39e'},
-                        {'label':'40 TO 42',        'value':'40 TO 42'},
-                        {'label':'43 TO 45',        'value':'43 TO 45'},
-                        {'label':'46 TO 48' ,       'value':'46 TO 48'},
-                        {'label':'49 TO 51',        'value':'49 TO 51'},
+            options = [{'label':'01 TO 03',         'value':'0'},
+                        {'label':'01 TO 05',        'value':'1'},
+                        {'label':'04 TO 06',        'value':'2'},
+                        {'label':'06 TO 10',        'value':'3'},
+                        {'label':'07 TO 09',        'value':'4'},
+                        {'label':'10 TO 12',        'value':'5'},
+                        {'label':'11 TO 15',        'value':'6'},
+                        {'label':'13 TO 15',        'value':'7'},
+                        {'label':'16 TO 18',        'value':'8'},
+                        {'label':'16 TO 20',        'value':'9'},
+                        {'label':'19 TO 21',        'value':'10'},
+                        {'label':'21 TO 25',        'value':'11'},
+                        {'label':'22 TO 24',        'value':'12'},
+                        {'label':'25 TO 27',        'value':'13'},
+                        {'label':'26 TO 30',        'value':'14'},
+                        {'label':'28 TO 30',        'value':'15'},
+                        {'label':'31 TO 33',        'value':'16'},
+                        {'label':'31 TO 35',        'value':'17'},
+                        {'label':'34 TO 36',        'value':'18'},
+                        {'label':'36 TO 40',        'value':'29'},
+                        {'label':'37 TO 39',        'value':'20'},
+                        {'label':'40 TO 42',        'value':'21'},
+                        {'label':'43 TO 45',        'value':'22'},
+                        {'label':'46 TO 48' ,       'value':'23'},
+                        {'label':'49 TO 51',        'value':'24'},
 
 
                         ])
@@ -316,18 +317,32 @@ def makeMap(value):
 )
 
 def update_output(n_clicks,value, value1, value2, value3,value4):
+    if n_clicks is not None:
+        town = int(value)
+        storey = int(value1)
+        type = int(value2)
+        model = int(value3)
+        floor = 50
+        lease = int(value4)
+        age = 50
 
-    arr = [[]]
-    print('click: {} , Value: {} {} {} {} {}'.format(
-        n_clicks,
-        value,
-        value1,
-        value2,
-        value3,
-        value4
-    ))
 
-    return 'The Real price is {}'
+        arr = np.array([[town, storey, type, model, floor, lease, age]])
+        arr.reshape(-1,1)
+        prediction = modelPred.predict(arr)
+
+        print('click: {} , Value: {} {} {} {} {} , Prediction: {}'.format(
+            n_clicks,
+            town,
+            value1,
+            value2,
+            value3,
+            value4,
+            prediction
+        ))
+
+
+        return 'The Real price is:  {}'.format(prediction)
 
 
 
@@ -467,33 +482,33 @@ def render_content(tab):
                     html.Label('Select an area: ', style={'color':"#FFFFFF",'margin':'10px 20px 10px 10px'}),
 
                     dcc.Dropdown(id='town_id', options = [
-                    {'label':'Ang Mo Kio',      'value':'Ang Mo Kio'},
-                    {'label':'Bedok',           'value':'Bedok'},
-                    {'label':'Bishan',          'value':'Bishan'},
-                    {'label':'Bukit Batok',     'value':'Bukit Batok'},
-                    {'label':'Bukit Merah',     'value':'Bukit Merah'},
-                    {'label':'Bukit Panjang',   'value':'Bukit Panjang'},
-                    {'label':'Bukit Timah',     'value':'Bukit Timah'},
-                    {'label':'Central Area',    'value':'Central Area'},
-                    {'label':'Choa Chu Kang',   'value':'Choa Chu Kang'},
-                    {'label':'Clementi',        'value':'Clementi'},
-                    {'label':'Geylang',         'value':'Geylang'},
-                    {'label':'Hougang',         'value':'Hougang'},
-                    {'label':'Jurong East',     'value':'Jurong East'},
-                    {'label':'Jurong West',     'value':'Jurong West'},
-                    {'label':'Kallang/Whampoa', 'value':'Kallang/Whampoa'},
-                    {'label':'Lim Chu Kang',    'value':'Lim Chu Kang'},
-                    {'label':'Marine Parade',   'value':'Marine Parade'},
-                    {'label':'Pasir Ris',       'value':'Pasir Ris'},
-                    {'label':'Punggol',         'value':'Punggol'},
-                    {'label':'Queenstown',      'value':'Queenstown'},
-                    {'label':'Sembawang',       'value':'Sembawang'},
-                    {'label':'Sengkang',        'value':'Sengkang'},
-                    {'label':'Serangoon',       'value':'Serangoon'},
-                    {'label':'Tampines',        'value':'Tampines'},
-                    {'label':'Toa Payoh',       'value':'Toa Payoh'},
-                    {'label':'Woodlands',       'value':'Woodlands'},
-                    {'label':'Yishun',          'value':'Yishun'},]
+                    {'label':'Ang Mo Kio',      'value':'0'},
+                    {'label':'Bedok',           'value':'1'},
+                    {'label':'Bishan',          'value':'2'},
+                    {'label':'Bukit Batok',     'value':'3'},
+                    {'label':'Bukit Merah',     'value':'4'},
+                    {'label':'Bukit Panjang',   'value':'5'},
+                    {'label':'Bukit Timah',     'value':'6'},
+                    {'label':'Central Area',    'value':'7'},
+                    {'label':'Choa Chu Kang',   'value':'8'},
+                    {'label':'Clementi',        'value':'9'},
+                    {'label':'Geylang',         'value':'10'},
+                    {'label':'Hougang',         'value':'11'},
+                    {'label':'Jurong East',     'value':'12'},
+                    {'label':'Jurong West',     'value':'13'},
+                    {'label':'Kallang/Whampoa', 'value':'14'},
+                    {'label':'Lim Chu Kang',    'value':'15'},
+                    {'label':'Marine Parade',   'value':'16'},
+                    {'label':'Pasir Ris',       'value':'17'},
+                    {'label':'Punggol',         'value':'18'},
+                    {'label':'Queenstown',      'value':'19'},
+                    {'label':'Sembawang',       'value':'20'},
+                    {'label':'Sengkang',        'value':'21'},
+                    {'label':'Serangoon',       'value':'22'},
+                    {'label':'Tampines',        'value':'23'},
+                    {'label':'Toa Payoh',       'value':'24'},
+                    {'label':'Woodlands',       'value':'25'},
+                    {'label':'Yishun',          'value':'26'},]
                     ,
                     style = {
                     #'position':'absolute',
