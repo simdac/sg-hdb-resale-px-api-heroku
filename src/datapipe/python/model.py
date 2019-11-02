@@ -1,6 +1,6 @@
 
 import pickle
-
+import numpy as np
 
 filename = 'model1.h5'
 infile = open(filename,'rb')
@@ -9,9 +9,12 @@ infile.close()
 
 
 
-print(model)
+#model.score()
+arr =  np.array([[1,2,3,3,3,5,1]])
+arr.reshape(-1,1)
+print(model.columns)
 
-print(type(model))
+print(model.predict(arr))
 
 
 

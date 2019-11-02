@@ -16,14 +16,14 @@ class MapAPI():
         self.base_url = self.base+ self.api_ext+ self.token
 
     def searchCord(self,query, geom='Y', addr='Y', page=1):
-        print('***',query)
+        #print('***',query)
         query = self.convertQuery(query)
         self.search  = '&searchVal={}'.format(query)
         self.geom    = '&returnGeom={}'.format(geom)
         self.address = '&getAddrDetails={}'.format(addr)
         self.pageNum = '&pageNum={}'.format(page)
         url = self.base_url+ self.search+ self.geom+ self.address+ self.pageNum
-        print(url)
+        #print(url)
         return self.getLatLng(url)
 
 
@@ -31,11 +31,11 @@ class MapAPI():
         file = requests.get(url)
         data = file.json()
         j = json.dumps(data, indent=4)
-        print(j)
+        #print(j)
         lat = data['results'][0]['LATITUDE']
         lng = data['results'][0]['LONGITUDE']
         cordinates = (lat,lng)
-        print(cordinates)
+        #print(cordinates)
         return cordinates
 
     def convertQuery(self, string_query):
