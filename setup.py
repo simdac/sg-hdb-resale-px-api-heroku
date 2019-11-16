@@ -10,10 +10,10 @@ import plotly.graph_objs as go
 
 from requests.models import PreparedRequest
 import pandas as pd
-from API import get_all
+from src.datapipe.python.API import get_all
 import geopandas as gpd
 
-import OneMap
+import src.datapipe.python.OneMap
 import pickle
 
 from sklearn.preprocessing import LabelEncoder
