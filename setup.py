@@ -14,7 +14,7 @@ from src.datapipe.python.API import get_all
 import geopandas as gpd
 
 import src.datapipe.python.OneMap
-import pickle
+#import pickle
 
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
@@ -44,7 +44,7 @@ print(df.flat_model.unique())
 ##Init model
 filename = 'src/datapipe/python/model1.h5'
 infile = open(filename,'rb')
-modelPred = pickle.load(infile)
+#modelPred = pickle.load(infile)
 infile.close()
 
 
@@ -333,7 +333,7 @@ def update_output(n_clicks,value, value1, value2, value3,value4):
 
         arr = np.array([[town, storey, type, model, floor, lease, age]])
         arr.reshape(-1,1)
-        prediction = modelPred.predict(arr)
+        prediction = 0#modelPred.predict(arr)
 
         print('click: {} , Value: {} {} {} {} {} , Prediction: {}'.format(
             n_clicks,
