@@ -42,7 +42,7 @@ df['flat_model'] = le.fit_transform(df['flat_model'])
 print(df.flat_model.unique())
 
 ##Init model
-filename = 'model1.h5'
+filename = 'src/datapipe/python/model1.h5'
 infile = open(filename,'rb')
 modelPred = pickle.load(infile)
 infile.close()
@@ -59,7 +59,7 @@ infile.close()
 
 
 mapApi = OneMap.MapAPI()
-shapefile = 'MapData/MP14_PLNG_AREA_WEB_PL.shp'
+shapefile = 'src/datapipe/python/MapData/MP14_PLNG_AREA_WEB_PL.shp'
 geo_file = gpd.read_file(shapefile)
 flatData = pd.read_csv('src/datapipe/python/resale_flat_prices.csv')
 
