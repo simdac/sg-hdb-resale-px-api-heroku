@@ -3,3 +3,6 @@ dash-renderer==0.7.4
 dash-html-components==0.7.0  
 dash-core-components==0.12.0
 plotly==2.0.11
+folium==0.10.0
+requests==2.21.0
+pickle
