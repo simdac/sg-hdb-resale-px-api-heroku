@@ -28,7 +28,7 @@ import numpy as np
 from API import get_all
 
 #df  = get_all()
-df = pd.read_csv('resale_flat_prices.csv')
+df = pd.read_csv('src/datapipe/python/resale_flat_prices.csv')
 #print(df.tail())
 #print(df.head())
 
@@ -61,7 +61,7 @@ infile.close()
 mapApi = OneMap.MapAPI()
 shapefile = 'MapData/MP14_PLNG_AREA_WEB_PL.shp'
 geo_file = gpd.read_file(shapefile)
-flatData = pd.read_csv('resale_flat_prices.csv')
+flatData = pd.read_csv('src/datapipe/python/resale_flat_prices.csv')
 
 external_stylesheets = ['https://codepen.io/chriddpy/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets = external_stylesheets)
