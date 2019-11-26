@@ -9,25 +9,20 @@ import pandas as pd
 import plotly.graph_objs as go
 
 from requests.models import PreparedRequest
-import pandas as pd
 from src.datapipe.python.API import get_all
 import geopandas as gpd
 
 import src.datapipe.python.OneMap
 from src.datapipe.python.OneMap import MapAPI
-#import pickle
+import pickle
 from src.datapipe.python import *
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 import numpy as np
-import  os
-os.path.dirname(os.path.abspath('src.datapipe.python'))
+
+
 
 '''             Directly Load the data in dataframe, chek and reload to make sure its there      '''
-
-
-
-from src.datapipe.python.API import get_all
 
 #df  = get_all()
 df = pd.read_csv('src/datapipe/python/resale_flat_prices.csv')
@@ -46,7 +41,7 @@ print(df.flat_model.unique())
 ##Init model
 filename = 'src/datapipe/python/model1.h5'
 infile = open(filename,'rb')
-#modelPred = pickle.load(infile)
+modelPred = pickle.load(infile)
 infile.close()
 
 
