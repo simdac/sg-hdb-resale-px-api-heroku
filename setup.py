@@ -14,12 +14,14 @@ from src.datapipe.python.API import get_all
 import geopandas as gpd
 
 import src.datapipe.python.OneMap
+from src.datapipe.python.OneMap import MapAPI
 #import pickle
-
+from src.datapipe.python import *
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 import numpy as np
-
+import  os
+os.path.dirname(os.path.abspath('src.datapipe.python'))
 
 '''             Directly Load the data in dataframe, chek and reload to make sure its there      '''
 
@@ -48,6 +50,7 @@ infile = open(filename,'rb')
 infile.close()
 
 
+print('#################')
 
 
 
@@ -57,8 +60,7 @@ infile.close()
 
 
 
-
-mapApi = OneMap.MapAPI()
+mapApi = MapAPI()
 shapefile = 'src/datapipe/python/MapData/MP14_PLNG_AREA_WEB_PL.shp'
 geo_file = gpd.read_file(shapefile)
 flatData = pd.read_csv('src/datapipe/python/resale_flat_prices.csv')
