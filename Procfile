@@ -1,1 +1,1 @@
-web: gunicorn sg-hdb-resale-px-app:app
+web: gunicorn sg-hdb-resale-px-api-heroku:app
