@@ -17,6 +17,8 @@
 *.xml
 *.sql
 *.sqlite
+*.pyc     #jiaer wrote this
+.DS_Store #jiaer wrote this
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
