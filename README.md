@@ -22,4 +22,9 @@ This project and everyone participating in it is governed by the this project's 
 
 # Credits
 > Coming soon...
+<<<<<<< HEAD
 AHIHIHI Hieu is HERE !!!
+=======
+
+Aditya -> Github Check
+>>>>>>> temp
